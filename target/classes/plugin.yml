@@ -1,0 +1,33 @@
+main: com.Blackveiled.Diablic.Diablic
+version: 1.0
+name: Diablic
+commands:
+  mute:
+    description: Mutes the player within the selected channel index.  Mutes do not persist through restarts/reloads. (To-Do)
+    usage: /mute <Channel Index> <Player Name>
+  unmute:
+    description: Unmutes the player within the selected channel index.  Mutes do not persist through restarts/reloads. (To-Do)
+    usage: /unmute <Channel Index> <Player Name>
+  ban:
+    description: Bans the player with specified reason.
+    usage: /ban <Player> <Reason>
+    permission: diablic.command.ban
+  buildmode:
+    description: Toggles buildmode for operator.
+    usage: /buildmode
+    permission: diablic.command.buildmode
+  warp:
+    description: Warp command tool.  Warps use names, not numbers.
+    usage: /warp <add/remove/to/list> <warp or page number>
+    permission: diablic.command.warp
+  speed:
+    description: Increase fly speed and move speed to travel faster.
+    usage: /speed <speed>
+    permission: diablic.command.speed
+  jump:
+    description: Amplify jump height
+    usage: /jump <amplifier>
+  save:
+    description: Saves the database manually.
+    usage: /save
+    permission: diablic.command.save
