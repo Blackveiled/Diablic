@@ -14,6 +14,8 @@ import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.InventoryHolder;
 
 public class PlayerInventoryEvent implements Listener {
 
@@ -91,7 +93,7 @@ public class PlayerInventoryEvent implements Listener {
      * @param e
      */
     @EventHandler
-    public void PlayerUseItemEvent(PlayerItemConsumeEvent e)    {
+    public void PlayerUseItemEvent(PlayerInteractEvent e)    {
         Player p = e.getPlayer();
         PlayerManager pm = instance.getPlayerManager();
         if(pm.hasPlayer(p.getUniqueId()))   {
@@ -103,7 +105,7 @@ public class PlayerInventoryEvent implements Listener {
                 pm.updatePlayer(pd);
                 p.openInventory(p.getInventory());
                 p.sendMessage(ChatColor.GRAY + "Opening Game Menu");
-                e.setCancelled(true);
+                //e.setCancelled(true);
             }
         }
     }
@@ -113,7 +115,7 @@ public class PlayerInventoryEvent implements Listener {
         Player p = (Player) e.getWhoClicked();
         PlayerManager pm = instance.getPlayerManager();
         if(e.getInventory().getType().equals(InventoryType.PLAYER)) {
-
+            p.sendMessage("Slot: " + e.getSlot());
         }
     }
 }

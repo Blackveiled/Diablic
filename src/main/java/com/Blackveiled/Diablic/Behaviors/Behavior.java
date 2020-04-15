@@ -2,6 +2,8 @@ package com.Blackveiled.Diablic.Behaviors;
 
 import org.bukkit.entity.LivingEntity;
 
+import java.util.UUID;
+
 public class Behavior {
 
     public enum BehaviorType    {
@@ -42,6 +44,10 @@ public class Behavior {
     private Effect periodEffect; // The Effect applied for each period count.
     private Effect periodFinalEffect; // The Effect applied on the final period.
     private LivingEntity entity; // The entity which the behavior is applied to.
+
+    private UUID casterUUID; // Used to reference the Caster.
+    private Object sourceObject; // Used to reference potential blocks, w/e
+    private UUID targetUUID;
 
     public Behavior()   {
 

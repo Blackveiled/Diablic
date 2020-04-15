@@ -75,6 +75,7 @@ public class Diablic extends JavaPlugin {
             getServer().getPluginManager().registerEvents(new PlayerOnQuit(this), this);
             getServer().getPluginManager().registerEvents(new BlockProtectionEvent(this), this);
             getServer().getPluginManager().registerEvents(new WeatherPrevent(), this);
+            getServer().getPluginManager().registerEvents(new PlayerInventoryEvent(this), this);
 
             // Register Commands
             getServer().getPluginCommand("mute").setExecutor(new Mute(this));

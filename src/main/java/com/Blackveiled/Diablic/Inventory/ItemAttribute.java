@@ -72,4 +72,11 @@ public class ItemAttribute {
     public AttributeType getType()  {
         return this.type;
     }
+
+    public String getAmountString() {
+        String amt;
+        amt = "+";
+        if(amount < 0) amt = "-";
+        return amt + getAmount() + " " + toString();
+    }
 }

@@ -30,6 +30,7 @@ public class Player {
     public boolean operator = false;
     public boolean banned = false;
     public boolean buildMode = false;
+    public boolean firstJoin = true;
 
     private InventoryState inventoryState = InventoryState.NONE;
     private Status playerStatus = new Status();
@@ -188,4 +189,9 @@ public class Player {
             }
         }
     }
+
+    public void setFirstJoin(boolean b)  {
+        this.firstJoin = b;
+    }
+
 }

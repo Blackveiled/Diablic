@@ -1,16 +1,18 @@
 package com.Blackveiled.Diablic.Inventory;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class DIAItem {
 
     // Basic Item Information
     private int index;
+    private int itemLevel;
     private String name;
     private Rarity rarity;
     private String description;
@@ -36,6 +38,22 @@ public class DIAItem {
     public ItemStack createItemStack() {
         ItemStack is = new ItemStack(material);
         ItemMeta m = is.getItemMeta();
+
+        m.setDisplayName(rarity.getColor() + name);
+        // Generate Lore for Item
+        List<String> l = new ArrayList();
+
+        l.add(rarity.toStringWithColor() + " " + type.toString());
+        l.add("");
+        l.add(ChatColor.YELLOW + "Attributes");
+
+        for(ItemAttribute att : attributes) {
+            l.add(att.getAmountString());
+        }
+
+        m.setLore(l);
+        is.setItemMeta(m);
+
         m.setDisplayName(name);
         return is;
     }

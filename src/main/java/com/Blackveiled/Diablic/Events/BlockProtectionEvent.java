@@ -36,15 +36,16 @@ public class BlockProtectionEvent implements Listener {
         if(instance.getPlayerManager().hasPlayer(event.getPlayer().getUniqueId()))  {
             com.Blackveiled.Diablic.Entity.Player playerData = instance.getPlayerManager().getPlayer(event.getPlayer().getUniqueId());
             if(!playerData.buildMode) {event.setCancelled(true); player.sendMessage(ChatColor.RED + "You cannot break blocks here."); return;}
-        }
+        }   else    { player.sendMessage(ChatColor.RED + "Server Error.  Please relog."); }
     }
 
     @EventHandler
     public void onPlayerBuild(BlockPlaceEvent event)   {
         Player player = event.getPlayer();
-        if(instance.getPlayerManager().containsPlayer(event.getPlayer().getUniqueId()))  {
+        if(instance.getPlayerManager().hasPlayer(event.getPlayer().getUniqueId()))  {
             com.Blackveiled.Diablic.Entity.Player playerData = instance.getPlayerManager().getPlayer(event.getPlayer().getUniqueId());
             if(!playerData.buildMode) {event.setCancelled(true); player.sendMessage(ChatColor.RED + "You cannot build here."); return;}
+            else    {   player.sendMessage(ChatColor.RED + "Server Error.  Please relog."); }
         }
     }
 

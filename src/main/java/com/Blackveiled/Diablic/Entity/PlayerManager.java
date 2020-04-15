@@ -2,6 +2,7 @@ package com.Blackveiled.Diablic.Entity;
 
 import com.Blackveiled.Diablic.Chat.ChatChannel;
 import com.Blackveiled.Diablic.Diablic;
+import org.bukkit.ChatColor;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.sql.Connection;
@@ -110,6 +111,7 @@ public class PlayerManager {
                                 pd.buildMode = res.getBoolean("buildmode");
                                 pd.banned = res.getBoolean("banned");
                                 pd.banReason = res.getString("banreason");
+                                pd.setFirstJoin(false);
                             }
 
                             res.close();
@@ -126,6 +128,9 @@ public class PlayerManager {
                         Global.addPlayerToChannel(uuid);
                         instance.getChannelManager().updateChatChannel(Diablic.global, Global);
                         instance.getPlayerManager().savePlayerToDatabase(uuid);
+                        if(pd.firstJoin)    {
+                            pd.getPlayer().sendMessage(ChatColor.GRAY + "This is your first time joining the server." +ChatColor.RED+" (Placeholder Message)");
+                        }
                     }
                     catch(SQLException ex)  {
                         ex.printStackTrace();
