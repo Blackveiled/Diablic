@@ -9,4 +9,6 @@ public class PermissionNode {
     public PermissionNode(Permission node)  {
         this.node = node;
     }
+
+
 }

@@ -47,7 +47,10 @@ public class Diablic extends JavaPlugin {
         instance = this;
 
         this.saveDefaultConfig();
-
+        Bukkit.getLogger().info("==============================================================");
+        Bukkit.getLogger().info("DIABLIC PLUGIN INITIALIZATION");
+        Bukkit.getLogger().info("");
+        Bukkit.getLogger().info("Initializing Database Connections, reading Configuration Files");
         this.host = getConfig().getString("database.host");
         this.port = getConfig().getInt("database.port");
         this.user = getConfig().getString("database.user");

@@ -1,8 +1,10 @@
 package com.Blackveiled.Diablic.Events;
 
-import com.Blackveiled.Diablic.Chat.ChatChannel;
 import com.Blackveiled.Diablic.Diablic;
-import com.Blackveiled.Diablic.Entity.Player;
+import com.Blackveiled.Diablic.Inventory.DIAItem;
+import com.Blackveiled.Diablic.Inventory.ItemAttribute;
+import com.Blackveiled.Diablic.Inventory.ItemType;
+import com.Blackveiled.Diablic.Inventory.Rarity;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
@@ -31,11 +33,11 @@ public class PlayerOnJoin implements Listener {
             // PlayerJoining.save();
 
             // ITEM INVENTORY TEST SHIT
-            ItemStack is = new ItemStack(Material.COMPASS);
-            ItemMeta m = is.getItemMeta();
-            m.setDisplayName(ChatColor.RESET + "Game Menu");
-            m.setLocalizedName(ChatColor.RESET + "Game Menu");
-            is.setItemMeta(m);
+            DIAItem di = new DIAItem(1, "Game Menu", Rarity.MYTHICAL, Material.COMPASS, ItemType.BLOCK);
+            di.getAttributes().add(new ItemAttribute(ItemAttribute.AttributeType.STAMINA, 10));
+            di.getAttributes().add(new ItemAttribute(ItemAttribute.AttributeType.ATTACK_POWER, 2));
+            di.getAttributes().add(new ItemAttribute(ItemAttribute.AttributeType.CRITICAL_CHANCE, 1));
+            ItemStack is = di.createItemStack();
             Player.getInventory().setItem(8, is);
 
             instance.getPlayerManager().loadPlayerFromDatabase(event.getPlayer().getUniqueId());

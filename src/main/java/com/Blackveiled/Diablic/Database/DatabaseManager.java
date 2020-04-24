@@ -1,14 +1,6 @@
 package com.Blackveiled.Diablic.Database;
 
 import com.Blackveiled.Diablic.Diablic;
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.UUID;
 
 public class DatabaseManager extends Database{
 

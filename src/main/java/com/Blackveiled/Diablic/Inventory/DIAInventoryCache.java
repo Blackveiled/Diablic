@@ -6,14 +6,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class DIAInventoryManager {
+public class DIAInventoryCache {
 
     private final Diablic instance;
 
-    private Map<Integer, DIAItem> itemCache = new HashMap();
-    private Map<String, Integer> itemNameConversionCache = new HashMap();
+    private static final Map<Integer, DIAItem> itemCache = new HashMap();
+    private static final Map<String, Integer> itemNameConversionCache = new HashMap();
 
-    public DIAInventoryManager(Diablic instance)   {
+    public DIAInventoryCache(Diablic instance)   {
         this.instance = instance;
     }
 
@@ -21,7 +21,7 @@ public class DIAInventoryManager {
         return null;
     }
 
-    public DIAItem getItemFromString(String string) {
+    public static DIAItem getItemFromString(String string) {
         int itemIndex = -1;
         if(itemNameConversionCache.containsKey(string)) {
             itemIndex = itemNameConversionCache.get(string);
@@ -34,7 +34,7 @@ public class DIAInventoryManager {
         return null;
     }
 
-    public DIAItem getItem(int i)   {
+    public static DIAItem getItem(int i)   {
         if(itemCache.containsKey(i))    {
             return itemCache.get(i);
         }

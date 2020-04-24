@@ -140,7 +140,6 @@ public abstract class Database {
                 public void run() {
                     try {
                         preparedStatement.execute();
-
                         preparedStatement.close();
                     } catch (SQLException e) {
                         e.printStackTrace();

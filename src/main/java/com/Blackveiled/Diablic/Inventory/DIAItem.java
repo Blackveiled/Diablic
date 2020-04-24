@@ -13,17 +13,18 @@ public class DIAItem {
     // Basic Item Information
     private int index;
     private int itemLevel;
+    private int levelRequirement = 0;
     private String name;
     private Rarity rarity;
     private String description;
     private Material material;
     private ItemType type;
 
-    private int maxDurability;
+    private double maxDurability;
 
     private ItemFlags itemFlags;
-    private ItemModifications itemModifications = null;
-    private List<ItemAttribute> attributes;
+    private final ItemModifications itemModifications = null;
+    private final List<ItemAttribute> attributes = new ArrayList();
 
     // Item Flags
 
@@ -44,18 +45,29 @@ public class DIAItem {
         List<String> l = new ArrayList();
 
         l.add(rarity.toStringWithColor() + " " + type.toString());
-        l.add("");
-        l.add(ChatColor.YELLOW + "Attributes");
 
-        for(ItemAttribute att : attributes) {
-            l.add(att.getAmountString());
+        // Implement Attribute Lore (No particular order)
+        if(!attributes.isEmpty()) {
+            l.add("");
+            l.add(ChatColor.YELLOW + "" + ChatColor.UNDERLINE + "Attributes");
+            l.add("");
+            for (ItemAttribute att : attributes) {
+                l.add(att.getAmountString());
+            }
         }
+
+        if(levelRequirement > 0) l.add(ChatColor.RESET + "Requires Level "+levelRequirement);
+        if(itemModifications != null) { if(maxDurability > 0) l.add(itemModifications.getCurrentDurability() + "/" + maxDurability + " Durability"); }
 
         m.setLore(l);
         is.setItemMeta(m);
 
         m.setDisplayName(name);
         return is;
+    }
+
+    public void updateItemStack(ItemStack is)    {
+
     }
 
     public int getIndex()   { return index; }
@@ -68,6 +80,13 @@ public class DIAItem {
         return attributes;
     }
 
+
     public Material getMaterial()   { return material; }
+
+    public boolean isBroken()   {
+        if(itemFlags.isIndestructible()) return false;
+        if(itemModifications != null) if(itemModifications.getCurrentDurability() <= 0) return true;
+        return false;
+    }
 
 }

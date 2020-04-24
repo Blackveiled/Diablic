@@ -8,6 +8,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
 import org.bukkit.event.entity.EntityExplodeEvent;
+import org.bukkit.event.player.PlayerBedLeaveEvent;
 
 /***
  *
@@ -65,4 +66,9 @@ public class BlockProtectionEvent implements Listener {
 
     @EventHandler
     public void onEntityExplode(EntityExplodeEvent event)   { event.setCancelled(true); }
+
+    @EventHandler
+    public void onBedLeave(PlayerBedLeaveEvent e)   {
+        e.setSpawnLocation(false);
+    }
 }

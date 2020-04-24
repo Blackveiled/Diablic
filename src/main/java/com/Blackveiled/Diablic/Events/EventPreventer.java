@@ -1,8 +1,6 @@
 package com.Blackveiled.Diablic.Events;
 
-import com.Blackveiled.Diablic.Chat.ChatChannel;
 import com.Blackveiled.Diablic.Diablic;
-import com.Blackveiled.Diablic.Entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;

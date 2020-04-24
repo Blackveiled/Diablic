@@ -1,0 +1,58 @@
+
+
+       ///////////////    ////////////////   //////////////   ///////////////    ///               ////////////////  ////////////////
+      /////////////////  ////////////////  ////////////////  /////////////////  ///               ////////////////  ////////////////
+     ///           ///        ///         ///          ///  ///           ///  ///                     ///         ///
+    ///           ///        ///         ///          ///  ///           ///  ///                     ///         ///
+   ///           ///        ///         ////////////////  ///////////////    ///                     ///         ///
+  ///           ///        ///         ///          ///  ///           ///  ///                     ///         ///
+ /////////////////  ////////////////  ///          ///  /////////////////  ////////////////  ////////////////  ////////////////
+///////////////    ////////////////  ///          ///  ////////////////   ////////////////  ////////////////  ////////////////
+
+=====================================================================================================================================
+
+    DIABLIC ALPHA   -   PROGRESS & MILESTONES + Information
+
+    ====================================================================================================================
+        •   ROAD MAP
+    ====================================================================================================================
+
+    1. Inventory & Items System
+        • DIAItem - Core Class (Incomplete)
+        • ItemType (Incomplete)
+
+    ====================================================================================================================
+        ITEM ATTRIBUTES & STATS (and descriptions)
+    ====================================================================================================================
+
+    PRIMARY ATTRIBUTES
+        Primary Attributes are class-specific stats, which increase the effect potential of an ability (Agility, Strength, Intellect)
+        •   Agility - Increases armor by (x) per stat.
+        •   Strength - Increases physical damage by 0.5 per stat (subject to change).
+        •   Stamina - Increases health points by 0.5 per stat (subject to change).
+        •   Intellect - Increases mana by 1 per stat.
+        •   Spirit - Increases mana regeneration every 5 ticks by 0.1 (subject to change).
+
+    SECONDARY ATTRIBUTES
+        •   LIFE (%) - Increases health points by a %.  This modifier is additive (10% + 10%).
+        •   ARMOR - Reduces the base damage of an attack or effect.  This is applied before other modifiers.
+        •   ARMOR PENETRATION - Reduces the armor of the target by X amount per physical attack (Does not affect spells).
+        •   DODGE CHANCE - Increases the chance to dodge an attack or effect (ignore damage).
+        •   CRITICAL CHANCE - Increases the chance for an attack or effect to deal a critical blow.
+        •   CRITICAL DAMAGE - Increases the damage modifier for critical blows.  Base Critical Damage: 50%
+        •   ALL-RESIST
+            •   PHYSICAL RESISTANCE - Reduces damage from physical damage-based attacks and effects.
+            •   FIRE RESISTANCE - Reduces damage from fire damage-based attacks and effects.
+            •   HOLY RESISTANCE - Reduces damage from holy damage-based attacks and effects.
+            •   SHADOW RESISTANCE - Reduces damage from shadow damage-based attacks and effects.
+            •   FROST RESISTANCE - Reduces damage from frost damage-based attacks and effects.
+            •   POISON RESISTANCE - Reduces damage from poison damage-based attacks and effects.
+            •   LIGHTNING RESISTANCE - Reduces damage from lightning damage-based attacks and effects.
+        •   LIFE PER HIT - The amount of health gained per hit per attack (or effect).
+        •   MOVEMENT SPEED - Increases the movement speed of the player by X amount (1/1000 of base value, i.e: 20% = 200 = 0.2).
+        •   JUMP STRENGTH - Increases the height jumped by the player when they press the spacebar by X amount (% value).
+        •   HEALING POWER - Increases the amount of healing from spells and effects for the player (increases base heal).
+        •   SPELL POWER - Increases the amount of damage/effect power by spells and effects for the player (increases base amount).
+        •   ATTACK POWER - Increases the amount of damage/effect power by physical attacks and effects for the player (increases base amount).
+
+
