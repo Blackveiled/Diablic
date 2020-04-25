@@ -36,7 +36,7 @@ public class Diablic extends JavaPlugin {
 
     // Chat Channel ID Constants
     public static int global = 0;
-    private static boolean debug = false;
+    public static boolean debug = false;
 
     public Diablic()   {
         this.GameServer = Bukkit.getServer();
@@ -73,7 +73,7 @@ public class Diablic extends JavaPlugin {
             // Database Initialization
 
             // Register Events
-            getServer().getPluginManager().registerEvents(new PlayerOnJoin(this), this);
+            getServer().getPluginManager().registerEvents(new PlayerEvents(this), this);
             getServer().getPluginManager().registerEvents(new PlayerChatEvent(this), this);
             getServer().getPluginManager().registerEvents(new PlayerOnQuit(this), this);
             getServer().getPluginManager().registerEvents(new BlockProtectionEvent(this), this);

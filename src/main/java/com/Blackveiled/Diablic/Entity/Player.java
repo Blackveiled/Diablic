@@ -35,6 +35,7 @@ public class Player {
     private InventoryState inventoryState = InventoryState.NONE;
     private Status playerStatus = new Status();
     private PlayerInventory inventory = new PlayerInventory(this);
+    private PlayerStatistics statistics = new PlayerStatistics();
 
 
     /***
@@ -143,6 +144,8 @@ public class Player {
     public void setInventoryState(InventoryState state) {
         this.inventoryState = state;
     }
+
+    public PlayerStatistics getStatistics() { return statistics; }
 
 
     /***

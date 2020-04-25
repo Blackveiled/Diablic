@@ -112,8 +112,8 @@ public class PlayerInventoryEvent implements Listener {
     public void PlayerInventoryInteractEvent(InventoryClickEvent e) {
         Player p = (Player) e.getWhoClicked();
         PlayerManager pm = instance.getPlayerManager();
-        if(e.getInventory().getType().equals(InventoryType.PLAYER)) {
-            p.sendMessage("Slot: " + e.getSlot());
+        if(instance.debug) p.sendMessage("Slot: " + e.getSlot());
+        if(e.getInventory().getHolder() == p.getInventory().getHolder())    {
         }
     }
 }

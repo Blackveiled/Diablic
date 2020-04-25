@@ -11,7 +11,7 @@ public class ItemAttribute {
 
         //Secondary Attributes
         CRITICAL_CHANCE(5), CRITICAL_DAMAGE(6),
-        DODGE_CHANCE(7), ARMOR(8), SPELL_DAMAGE(9),
+        DODGE_CHANCE(7), ARMOR(8), SPELL_POWER(9),
         ATTACK_POWER(10), ARMOR_PENETRATION(11), LIFE_PER_HIT(12),
         HEALING_POWER(13), BLOCK_CHANCE(14),
 
@@ -48,13 +48,38 @@ public class ItemAttribute {
                 case 8:
                     return "Armor";
                 case 9:
-                    return "Spell Damage";
+                    return "Spell Power";
                 case 10:
                     return "Attack Power";
+                case 11:
+                    return "Armor Penetration";
+                case 12:
+                    return "Life Per Hit";
+                case 13:
+                    return "Healing Power";
+                case 14:
+                    return "Block Chance";
+                case 15:
+                    return "All Resist";
+                case 16:
+                    return "Physical Resist";
+                case 17:
+                    return "Fire Resist";
+                case 18:
+                    return "Holy Resist";
+                case 19:
+                    return "Shadow Resist";
+                case 20:
+                    return "Poison Resist";
+                case 21:
+                    return "Lightning Resist";
+                case 22:
+                    return "Frost Resist";
             }
             return null;
         }
 
+        @Deprecated
         public static AttributeType fromString(String str) {
             switch(str) {
                 case "Agility":
