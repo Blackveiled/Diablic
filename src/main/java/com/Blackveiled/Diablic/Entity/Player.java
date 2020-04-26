@@ -1,9 +1,12 @@
 package com.Blackveiled.Diablic.Entity;
 
 import com.Blackveiled.Diablic.Diablic;
-import com.Blackveiled.Diablic.Inventory.PlayerInventory;
+import com.Blackveiled.Diablic.Inventory.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.inventory.ItemStack;
 import org.json.JSONObject;
 import org.json.JSONStringer;
 import org.json.JSONTokener;
@@ -23,7 +26,6 @@ public class Player {
     private ChatColor color = ChatColor.BLUE;
     public String banReason = "";
     private Date LastTimeOnline;
-    private EntityAttributes attributes;
     public String lastip;
 
 
@@ -33,8 +35,8 @@ public class Player {
     public boolean firstJoin = true;
 
     private InventoryState inventoryState = InventoryState.NONE;
-    private Status playerStatus = new Status();
-    private PlayerInventory inventory = new PlayerInventory(this);
+    private PlayerAttributes playerAttributes = new PlayerAttributes();
+    private final PlayerInventory inventory = new PlayerInventory(this);
     private PlayerStatistics statistics = new PlayerStatistics();
 
 
@@ -48,10 +50,20 @@ public class Player {
 
         if (Diablic.getPlayer(this).isOp()) this.color = ChatColor.RED;
 
-        this.attributes = new EntityAttributes(this.getPlayer());
-
         String ipStr1 = this.getPlayer().getAddress().getAddress().toString();
         this.lastip = this.getPlayer().getAddress().getAddress().toString().substring(1, ipStr1.length());
+
+        getPlayer().sendMessage(ChatColor.GRAY + "UUID: "+ChatColor.GOLD+uuid.toString()+ChatColor.GRAY+" | IP: "+ChatColor.GOLD+lastip);
+
+        // TESTING STUFF
+
+        DIAItem di = new DIAItem(1, "Game Menu", Rarity.ZENITH, Material.COMPASS, ItemType.UTILITY);
+        di.getAttributes().add(new com.Blackveiled.Diablic.Inventory.Attribute(AttributeType.STAMINA, 10));
+        di.getAttributes().add(new com.Blackveiled.Diablic.Inventory.Attribute(AttributeType.ATTACK_POWER, 2));
+        di.getAttributes().add(new com.Blackveiled.Diablic.Inventory.Attribute(AttributeType.CRITICAL_CHANCE, 1));
+        di.setDescription(ChatColor.GRAY + "Use this to view the Game Menu!");
+        inventory.getInventory()[8] = di;
+        getPlayer().getInventory().setItem(8, inventory.getInventory()[8].createItemStack());
 
     }
 
@@ -77,6 +89,13 @@ public class Player {
      */
     public org.bukkit.entity.Player getPlayer() {
         return Bukkit.getPlayer(this.uuid);
+    }
+
+    /**
+     * Updates the player's maximum health value.
+     */
+    public void updatePlayerMaxHealth() {
+        getPlayer().getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(playerAttributes.getStaminaHealthAmount());
     }
 
 
@@ -223,5 +242,7 @@ public class Player {
     public void setFirstJoin(boolean b) {
         this.firstJoin = b;
     }
+
+    public PlayerAttributes getPlayerAttributes()   { return playerAttributes; }
 
 }

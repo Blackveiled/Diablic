@@ -24,16 +24,12 @@ public class DIAItem {
 
     private ItemFlags itemFlags;
     private final ItemModifications itemModifications = null;
-    private final List<ItemAttribute> attributes = new ArrayList();
+    private final List<Attribute> attributes = new ArrayList();
 
     // Item Flags
 
     public DIAItem(int index, String name, Rarity rarity, Material material, ItemType type)   {
         this.index = index; this.name = name; this.material = material; this.type = type; this.rarity = rarity;
-    }
-
-    public void setDescription(String description)  {
-        this.description = description;
     }
 
     public ItemStack createItemStack() {
@@ -51,13 +47,15 @@ public class DIAItem {
             l.add("");
             l.add(ChatColor.YELLOW + "" + ChatColor.UNDERLINE + "Attributes");
             l.add("");
-            for (ItemAttribute att : attributes) {
+            for (Attribute att : attributes) {
                 l.add(att.getAmountString());
             }
         }
 
         if(levelRequirement > 0) l.add(ChatColor.RESET + "Requires Level "+levelRequirement);
         if(itemModifications != null) { if(maxDurability > 0) l.add(itemModifications.getCurrentDurability() + "/" + maxDurability + " Durability"); }
+        l.add("");
+        l.add(description);
 
         m.setLore(l);
         is.setItemMeta(m);
@@ -74,9 +72,9 @@ public class DIAItem {
 
     public String getName() { return name; }
 
-    public String getDescription() { return description; }
+    public String getDescription() { return description; } public void setDescription(String description)  { this.description = description; }
 
-    public List<ItemAttribute> getAttributes()  {
+    public List<Attribute> getAttributes()  {
         return attributes;
     }
 

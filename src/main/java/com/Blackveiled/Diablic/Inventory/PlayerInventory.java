@@ -9,16 +9,14 @@ import java.util.UUID;
 
 public class PlayerInventory {
 
-    private final List<DIAItem> inventory = new ArrayList(40);
+    private DIAItem inventory[] = new DIAItem[40];
     private final Player player;
 
     public PlayerInventory(final Player p)    {
         this.player = p;
     }
 
-    public List<DIAItem> getInventory() { return inventory; }
-
-    public DIAItem getItemFromSlot(int slot)    { if(inventory.get(slot) != null) return inventory.get(slot); return null;}
+    public DIAItem[] getInventory() { return inventory; }
 
 
 }

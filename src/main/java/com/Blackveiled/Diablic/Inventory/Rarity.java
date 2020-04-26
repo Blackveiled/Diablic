@@ -4,17 +4,11 @@ import org.bukkit.ChatColor;
 
 public enum Rarity {
 
-    JUNK(0), COMMON(1), UNCOMMON(2), RARE(3), EPIC(4), LEGENDARY(5), SET_ITEM(6), MYTHICAL(7), ZENITH(8);
-
-    private int rarity;
-
-    Rarity(int rarity)   {
-        this.rarity = rarity;
-    }
+    JUNK(), COMMON(), UNCOMMON(), RARE(), EPIC(), LEGENDARY(), SET_ITEM(), MYTHICAL(), ZENITH();
 
     @Override
     public String toString()    {
-        switch(rarity)  {
+        switch(ordinal())  {
             case 0:
                 return "Junk";
             case 1:
@@ -69,7 +63,7 @@ public enum Rarity {
     }
 
     public String toStringWithColor()    {
-        switch(rarity)  {
+        switch(ordinal())  {
             case 0:
                 return getColor() + "Junk";
             case 1:
@@ -93,7 +87,7 @@ public enum Rarity {
     }
 
     public ChatColor getColor()   {
-        switch(rarity)  {
+        switch(ordinal())  {
             case 0:
                 return ChatColor.GRAY;
             case 1:
