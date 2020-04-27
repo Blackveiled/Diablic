@@ -1,45 +1,68 @@
 package com.Blackveiled.Diablic.Entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PlayerState {
 
-    private boolean idle = true;
-    private boolean combat = false;
-    private boolean stunned = false;
-    private boolean frozen = false;
-    private boolean casting = false;
-    private boolean interacting = false;
+    public enum State   {
 
-    private long combatTime = 0;
+        IDLE, COMBAT, STUNNED, FROZEN, CASTING, INTERACTING;
 
-    // Stun Times
-    private long stunTime = 0;
-    private long stunDuration = 0;
+        private boolean active = false;
+        private long timeStarted = 0;
+        private long duration = 0;
 
-    // Frozen Times
-    private long frozenTime = 0;
-    private long frozenDuration = 0;
+        State() {
+            timeStarted = System.currentTimeMillis();
+        }
 
-    // Casting Times
-    private long castTime = 0;
-    private long castDuration = 0;
+        public long getTimeStarted()    {
+            return timeStarted;
+        }
 
-    // Interacting Times
-    private long interactTime = 0;
-    private long interactDuration = 0;
+        public long getDuration()   {
+            return duration;
+        }
 
-    public boolean isIsle() { return idle; }
-    public boolean inCombat()   { return combat; }
-    public boolean isStunned()  { return stunned; }
-    public boolean isFrozen()   { return frozen; }
-    public boolean isCasting()  { return casting; }
-    public boolean isInteracting()  { return interacting; }
-    public long getCombatTime() { return combatTime; }
-    public long getStunTime()   { return stunTime; }
-    public long getStunDuration()   { return stunDuration; }
-    public long getFrozenTime() { return frozenTime; }
-    public long getFrozenDuration() { return frozenDuration; }
-    public long getCastTime()   { return castTime; }
-    public long getCastDuration()   { return castDuration; }
-    public long getInteractTime()   { return interactTime; }
-    public long getInteractDuration()   { return interactDuration; }
+        public void setTimeStarted(long d)  {
+            timeStarted = d;
+        }
+
+        public void setDuration(long d) {
+            duration = d;
+        }
+
+        @Override
+        public String toString()    {
+            switch(ordinal())   {
+                case 0:
+                    return "Idle";
+                case 1:
+                    return "Combat";
+                case 2:
+                    return "Stunned";
+                case 3:
+                    return "Frozen";
+                case 4:
+                    return "Casting";
+                case 5:
+                    return "Interacting";
+            }
+            return null;
+        }
+
+    }
+
+    private List<State> states = new ArrayList();
+
+    public PlayerState()    {
+
+    }
+
+    public List<State> states() {
+        return states;
+    }
+
+
 }

@@ -134,5 +134,67 @@ public class ChatChannel {
                                 ChatMessage);
             }
         }
+
+        // ComponentBuilder using the BungeeCord API; use in the future for advanced chat.
+
+        //ComponentBuilder message = new ComponentBuilder().color(switchChatColors(channelColor)).append("[")
+        //    .append(channelName).append("] [" + prefix + "] ").color(switchChatColors(VPlayer.getColor())).append(playerName).color(switchChatColors(channelColor)).append(": ")
+        //    .color(net.md_5.bungee.api.ChatColor.WHITE).append(": " + ChatMessage).create();
+    }
+
+    /**
+     * Converts a Bukkit ChatColor to a BungeeCord ChatColor.
+     * @param color
+     * @return
+     */
+    public static net.md_5.bungee.api.ChatColor switchChatColors(ChatColor color)  {
+        switch(color)   {
+            case AQUA:
+                return net.md_5.bungee.api.ChatColor.AQUA;
+            case BLACK:
+                return net.md_5.bungee.api.ChatColor.BLACK;
+            case BOLD:
+                return net.md_5.bungee.api.ChatColor.BOLD;
+            case BLUE:
+                return net.md_5.bungee.api.ChatColor.BLUE;
+            case DARK_AQUA:
+                return net.md_5.bungee.api.ChatColor.DARK_AQUA;
+            case DARK_BLUE:
+                return net.md_5.bungee.api.ChatColor.DARK_BLUE;
+            case DARK_GRAY:
+                return net.md_5.bungee.api.ChatColor.DARK_GRAY;
+            case DARK_GREEN:
+                return net.md_5.bungee.api.ChatColor.DARK_GREEN;
+            case DARK_PURPLE:
+                return net.md_5.bungee.api.ChatColor.DARK_PURPLE;
+            case DARK_RED:
+                return net.md_5.bungee.api.ChatColor.DARK_RED;
+            case GOLD:
+                return net.md_5.bungee.api.ChatColor.GOLD;
+            case GRAY:
+                return net.md_5.bungee.api.ChatColor.GRAY;
+            case GREEN:
+                return net.md_5.bungee.api.ChatColor.GREEN;
+            case ITALIC:
+                return net.md_5.bungee.api.ChatColor.ITALIC;
+            case LIGHT_PURPLE:
+                return net.md_5.bungee.api.ChatColor.LIGHT_PURPLE;
+            case MAGIC:
+                return net.md_5.bungee.api.ChatColor.MAGIC;
+            case RED:
+                return net.md_5.bungee.api.ChatColor.RED;
+            case RESET:
+                return net.md_5.bungee.api.ChatColor.RESET;
+            case STRIKETHROUGH:
+                return net.md_5.bungee.api.ChatColor.STRIKETHROUGH;
+            case UNDERLINE:
+                return net.md_5.bungee.api.ChatColor.UNDERLINE;
+            case WHITE:
+                return net.md_5.bungee.api.ChatColor.WHITE;
+            case YELLOW:
+                return net.md_5.bungee.api.ChatColor.YELLOW;
+
+        }
+        return null;
     }
 }

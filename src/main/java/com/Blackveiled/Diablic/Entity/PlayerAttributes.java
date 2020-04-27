@@ -19,9 +19,9 @@ public class PlayerAttributes {
     private int currentXp = 0;
 
     // Player Base Attributes
-    private List<Attribute> attributes = new ArrayList();
+    private final List<Attribute> attributes = new ArrayList();
 
-    private List<PlayerState> stateList = new ArrayList();
+    private final List<PlayerState> stateList = new ArrayList();
 
     /**
      * Initializes the base attributes for the player.
@@ -93,5 +93,47 @@ public class PlayerAttributes {
     public int getLevel()   { return level; }
     public int getCurrentXp()   { return currentXp; }
 
+    /**
+     * Returns the Attribute for the Player that matches the type.  There should be no more than one of each type per player.
+     * @param type
+     * @return
+     */
+    public Attribute getAttribute(AttributeType type) {
+        for (Attribute a : attributes)  {
+            if(a.getType().equals(type)) return a;
+        }
+        return null;
+    }
+
+    /**
+     * Adds the Attribute amount in the arguments to the player's attributes.
+     * @param att - Attribute (Example: Attribute from Item)
+     */
+    public void addAttribute(Attribute att) {
+        for(Attribute a : attributes)   {
+            if(a.getType().equals(att.getType())) {
+                int index = attributes.indexOf(a);
+                a.setAmount(a.getAmount() + att.getAmount());
+                attributes.set(index, a);
+                return;
+            }
+        }
+    }
+
+
+    /**
+     * Subtracts the Attribute amount in the arguments from the player's attributes.
+     * @param att - Attribute (Example: Attribute from Item)
+     */
+    public void subtractAttribute(Attribute att)    {
+        for(Attribute a : attributes)   {
+            if(a.getType().equals(att.getType())) {
+                int index = attributes.indexOf(a);
+                a.setAmount(a.getAmount() - att.getAmount());
+                attributes.set(index, a);
+                return;
+            }
+        }
+    }
 
 }
